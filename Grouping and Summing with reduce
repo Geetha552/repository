@@ -1,0 +1,35 @@
+const categories = ["electronics", "clothing", "electronics", "toys", "clothing", "toys", "toys"];
+
+
+function groupAndSumCategories(categoryArray) {
+
+  const countsObject = categoryArray.reduce((acc, category) => {
+    
+    if (acc[category]) {
+     
+      acc[category]++;
+    } else {
+      
+      acc[category] = 1;
+    }
+   
+    return acc;
+  }, {});
+
+  
+  const entriesArray = Object.entries(countsObject);
+  
+
+  const sortedCategories = entriesArray.sort((a, b) => {
+    
+    return b[1] - a[1];
+  });
+  
+  
+  return sortedCategories;
+}
+
+const resultObject = groupAndSumCategories(categories);
+console.log("Original Input:", categories);
+console.log("Output (Sorted Array):", resultObject); 
+
